@@ -3,7 +3,7 @@ import { isEmpty, validate } from 'class-validator';
 import cookie from 'cookie';
 import { Request, Response, Router } from "express";
 import jwt from "jsonwebtoken";
-import { User } from "../entities/User";
+import User from "../entities/User";
 import auth from '../middlewares/auth';
 
 const register = async (req: Request, res: Response) => {
@@ -57,7 +57,7 @@ const login = async (req: Request, res: Response) => {
       return res.status(401).json({ error: "Username or Password is incorrect" })
     }
 
-    const token = jwt.sign({ username }, process.env.JWT_SECRET)
+    const token = jwt.sign({ username }, process.env.JWT_SECRET!)
 
     res.set('Set-cookie', cookie.serialize('token', token, {
       httpOnly: true, //cannot be access by JS
@@ -69,11 +69,11 @@ const login = async (req: Request, res: Response) => {
 
     return res.json(user)
   } catch (error) {
-
+    return res.json({ error: "Something when wrong 😭" })
   }
 }
 
-const me = async (req: Request, res: Response) => {
+const me = async (_: Request, res: Response) => {
   return res.json(res.locals.user)
 }
 const logout = async (_: Request, res: Response) => {
