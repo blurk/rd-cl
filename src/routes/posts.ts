@@ -73,7 +73,7 @@ const commentOnPost = async (req: Request, res: Response) => {
 const router = Router();
 
 router.post('/', auth, creatPost)
-router.get('/get', getPosts)
+router.get('/', getPosts)
 router.get('/:identifier/:slug', getPost)
 router.post('/:identifier/:slug/comments', auth, commentOnPost)
 export default router
