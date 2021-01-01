@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FormEvent, useState } from 'react';
-import InputGroup from '../components/inputGroup';
+import InputGroup from '../components/InputGroup';
 
 export default function Login() {
 	const [username, setUsername] = useState('');
@@ -28,7 +28,7 @@ export default function Login() {
 	};
 
 	return (
-		<div className='flex'>
+		<div className='flex bg-white'>
 			<Head>
 				<title>Login</title>
 				<link rel='icon' href='/favicon.ico' />
