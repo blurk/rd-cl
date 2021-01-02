@@ -2,6 +2,7 @@ import axios from 'axios';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import Navbar from '../components/Navbar';
+import '../styles/icons.css';
 import '../styles/tailwind.css';
 axios.defaults.baseURL = 'http://localhost:5000/api';
 axios.defaults.withCredentials = true;
