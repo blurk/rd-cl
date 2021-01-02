@@ -3,7 +3,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FormEvent, useState } from 'react';
-import InputGroup from '../components/inputGroup';
+import InputGroup from '../components/InputGroup';
+import { useAuthState } from '../context/auth';
 
 export default function Register() {
 	const [email, setEmail] = useState('');
@@ -14,6 +15,10 @@ export default function Register() {
 
 	const router = useRouter();
 
+	const { authenticated } = useAuthState();
+	if (authenticated) {
+		router.push('/');
+	}
 	const submitForm = async (event: FormEvent) => {
 		event.preventDefault();
 
