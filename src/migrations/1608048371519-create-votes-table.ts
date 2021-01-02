@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner } from "typeorm";
+import {MigrationInterface, QueryRunner} from "typeorm";
 
 export class createVotesTable1608048371519 implements MigrationInterface {
     name = 'createVotesTable1608048371519'
@@ -24,4 +24,5 @@ export class createVotesTable1608048371519 implements MigrationInterface {
         await queryRunner.query(`ALTER TABLE "posts" ADD CONSTRAINT "FK_42377e3f89a203ca74d117e5961" FOREIGN KEY ("username") REFERENCES "users"("username") ON DELETE NO ACTION ON UPDATE NO ACTION`);
         await queryRunner.query(`DROP TABLE "votes"`);
     }
+
 }

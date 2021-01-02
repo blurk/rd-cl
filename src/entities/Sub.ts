@@ -1,14 +1,22 @@
-import { Column, Entity as TOEntity, Index, JoinColumn, ManyToOne, OneToMany } from "typeorm";
-import Entity from './Entity';
-import Post from "./Post";
-import User from "./User";
+import {
+  Column, Entity as TOEntity,
+
+  Index,
+
+  JoinColumn, ManyToOne,
+
+  OneToMany
+} from 'typeorm'
+import Entity from './Entity'
+import Post from './Post'
+import User from './User'
 
 
-@TOEntity("subs")
+@TOEntity('subs')
 export default class Sub extends Entity {
   constructor(sub: Partial<Sub>) {
     super()
-    Object.assign(this, sub);
+    Object.assign(this, sub)
   }
 
   @Index()
@@ -27,10 +35,10 @@ export default class Sub extends Entity {
   @Column({ nullable: true })
   bannerUrn: string
 
-  @ManyToOne(() => User, (user) => user.posts)
+  @ManyToOne(() => User)
   @JoinColumn({ name: 'username', referencedColumnName: 'username' })
   user: User
 
-  @OneToMany(() => Post, post => post.sub)
+  @OneToMany(() => Post, (post) => post.sub)
   posts: Post[]
 }

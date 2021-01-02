@@ -75,16 +75,17 @@ export default function PostCard({
 			<div className='w-full p-3'>
 				<div className='flex items-center'>
 					<Link href={`/r/${subName}`}>
-						<>
-							<img
-								src='https://www.gravatar.com/avatar/00000000000000000000037777777777?d=mp&f=y'
-								className='h-6 mr-1 rounded-full cursor-pointer w-7'
-							/>
-							<a className='text-xs font-bold cursor-pointer hover:underline'>
-								/r/{subName}
-							</a>
-						</>
+						<img
+							src='https://www.gravatar.com/avatar/00000000000000000000037777777777?d=mp&f=y'
+							className='h-6 mr-1 rounded-full cursor-pointer w-7'
+						/>
 					</Link>
+					<Link href={`/r/${subName}`}>
+						<a className='text-xs font-bold cursor-pointer hover:underline'>
+							/r/{subName}
+						</a>
+					</Link>
+
 					<p className='text-xs text-gray-501'>
 						<span className='mx-2'>•</span> Posted by
 						<Link href={`/u/${username}`}>
