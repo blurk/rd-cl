@@ -53,6 +53,12 @@ const getPost = async (req: Request, res: Response) => {
       //THIS ONE LINE TAKE ME ONE NIGHT 😡😡😡
       { relations: ['sub', 'votes', 'comments'] }
     )
+    //AND THIS  😡😡😡
+
+    //* set current user for current post
+    if (res.locals.user) {
+      post.setUserVote(res.locals.user)
+    }
 
     return res.json(post)
   } catch (error) {
