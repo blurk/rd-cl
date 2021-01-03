@@ -1,4 +1,4 @@
 declare module '*.svg' {
-  const content: any,
+  const content: any
   export default content
 }

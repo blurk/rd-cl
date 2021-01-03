@@ -1,9 +1,9 @@
 @font-face {
-  font-family: 'reddit';
+  font-family: 'readit';
   src:
-    url('fonts/reddit.ttf?kekhb4') format('truetype'),
-    url('fonts/reddit.woff?kekhb4') format('woff'),
-    url('fonts/reddit.svg?kekhb4#reddit') format('svg');
+    url('fonts/readit.ttf?2aninv') format('truetype'),
+    url('fonts/readit.woff?2aninv') format('woff'),
+    url('fonts/readit.svg?2aninv#readit') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -11,7 +11,7 @@
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'reddit' !important;
+  font-family: 'readit' !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
