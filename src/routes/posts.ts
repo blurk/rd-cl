@@ -17,8 +17,8 @@ const creatPost = async (req: Request, res: Response) => {
     const subRecord = await Sub.findOneOrFail({ name: sub })
 
     const post = new POST({ title, body, user, sub: subRecord })
-
     await post.save()
+
     return res.json(post)
   } catch (err) {
     console.log(err)
@@ -88,6 +88,11 @@ const router = Router();
 
 router.post('/', user, auth, creatPost)
 router.get('/', user, getPosts)
-router.get('/:identifier/:slug', getPost)
+/*
+  Check user if they logged in or not
+  if yes: set current user to res.locals.user for /client
+  else just continue to show the post
+*/
+router.get('/:identifier/:slug', user, getPost)
 router.post('/:identifier/:slug/comments', user, auth, commentOnPost)
 export default router

@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import axios from 'axios';
 import classNames from 'classnames';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -38,7 +38,7 @@ export default function PostPage() {
 		if (value === post.userVote) value = 0;
 
 		try {
-			const res = await Axios.post('/misc/vote', {
+			const res = await axios.post('/misc/vote', {
 				identifier,
 				slug,
 				value,
