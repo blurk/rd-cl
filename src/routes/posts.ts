@@ -95,8 +95,6 @@ const getPostComments = async (req: Request, res: Response) => {
       relations: ['votes']
     })
 
-    console.log(comments)
-
     if (res.locals.user) {
       comments.forEach(comment => comment.setUserVote(res.locals.user))
     }
