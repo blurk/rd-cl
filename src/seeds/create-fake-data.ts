@@ -9,7 +9,7 @@ import Vote from '../entities/Vote'
 
 
 function timePlus(duration = 0) {
-  const time = new Date('2021-01-02 17:25:43.18').getTime()
+  const time = new Date('2020-12-31 10:01:43.18').getTime()
 
   return new Date(time + duration).toISOString()
 }
@@ -30,14 +30,14 @@ export default class CreateData implements Seeder {
       .values([
         {
           username: 'john',
-          email: 'john@gmail.com',
+          email: 'john@email.com',
           password,
           createdAt: timePlus(),
           updatedAt: timePlus(),
         },
         {
           username: 'jane',
-          email: 'jane@gmail.com',
+          email: 'jane@email.com',
           password,
           createdAt: timePlus(minute * 5),
           updatedAt: timePlus(minute * 5),
