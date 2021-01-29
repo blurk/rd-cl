@@ -6,6 +6,7 @@ import React, { FormEvent, useState } from 'react';
 import useSWR from 'swr';
 import Sidebar from '../../../components/Sidebar';
 import { Post, Sub } from '../../../types';
+
 export default function submit() {
 	const [title, setTitle] = useState('');
 	const [body, setBody] = useState('');
