@@ -67,16 +67,7 @@ const vote = async (req: Request, res: Response) => {
 }
 
 const topSubs = async (_: Request, res: Response) => {
-  try {/**
-     * SELECT s.title, s.name,
-     * COALESCE('http://localhost:5000/images/' || s."imageUrn" , 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y') as imageUrl,
-     * count(p.id) as "postCount"
-     * FROM subs s
-     * LEFT JOIN posts p ON s.name = p."subName"
-     * GROUP BY s.title, s.name, imageUrl
-     * ORDER BY "postCount" DESC
-     * LIMIT 5;
-     */
+  try {
     const imageUrlExp = `COALESCE('${process.env.APP_URL}/images/' || s."imageUrn" , 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y')`
     const subs = await getConnection()
       .createQueryBuilder()

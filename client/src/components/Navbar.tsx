@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Fragment, useEffect, useState } from 'react';
 import { useAuthDispatch, useAuthState } from '../context/auth';
+import { LOGIN } from '../helpers/path_helper';
+import { GET_AUTH_LOGOUT } from '../helpers/url_helpers';
 import RedditLogo from '../images/reddit.svg';
 import { Sub } from '../types';
 
@@ -18,12 +20,12 @@ const Navbar: React.FC = () => {
 	const router = useRouter();
 
 	const logout = () => {
-		Axios.get('/auth/logout')
+		Axios.get(GET_AUTH_LOGOUT)
 			.then(() => {
 				dispatch('LOGOUT');
-				window.location.reload();
+				router.push(LOGIN);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {});
 	};
 
 	useEffect(() => {
@@ -42,10 +44,7 @@ const Navbar: React.FC = () => {
 				try {
 					const { data } = await axios.get(`/subs/search/${name}`);
 					setSubs(data);
-					console.log(data);
-				} catch (error) {
-					console.log(error);
-				}
+				} catch (error) {}
 			}, 250)
 		);
 	};
@@ -65,13 +64,13 @@ const Navbar: React.FC = () => {
 					</a>
 				</Link>
 				<span className='hidden text-2xl font-semibold lg:block'>
-					<Link href='/'>readit</Link>
+					<Link href='/'>reddit</Link>
 				</span>
 			</div>
 			{/* Search Input */}
 			<div className='max-w-full px-4 w-160'>
 				<div className='relative flex items-center bg-gray-100 border rounded hover:border-blue-500 hover:bg-white'>
-					<i className='pl-4 pr-3 text-gray-500 fas fa-search '></i>
+					<i className='pl-4 pr-3 text-gray-500 fas fa-search'></i>
 					<input
 						type='text'
 						className='py-1 pr-3 bg-transparent rounded w-160 focus:outline-none'
@@ -79,28 +78,30 @@ const Navbar: React.FC = () => {
 						value={name}
 						onChange={(e) => setName(e.target.value)}
 					/>
-					{/* SEARCH RESULTS */}
-					<div
-						className='absolute left-0 right-0 bg-white'
-						style={{ top: '100%' }}>
-						{subs?.map((sub) => (
-							<div
-								className='flex items-center px-4 py-3 cursor-pointer hover:bg-gray-200'
-								onClick={() => goToSub(sub.name)}>
-								<Image
-									className='rounded-full'
-									src={sub.imageUrl}
-									alt='sub'
-									height={(8 * 16) / 4}
-									width={(8 * 16) / 4}
-								/>
-								<div className='ml-4 text-sm'>
-									<p className='font-medium'>{sub.name}</p>
-									<p className='text-gray-600'>{sub.title}</p>
+					{name.trim().length > 0 && (
+						<div
+							className='absolute left-0 right-0 bg-white'
+							style={{ top: '100%' }}>
+							{subs?.map((sub: Sub) => (
+								<div
+									key={sub.name}
+									className='flex items-center px-4 py-3 cursor-pointer hover:bg-gray-200'
+									onClick={() => goToSub(sub.name)}>
+									<Image
+										className='rounded-full'
+										src={sub.imageUrl}
+										alt='sub'
+										height={(8 * 16) / 4}
+										width={(8 * 16) / 4}
+									/>
+									<div className='ml-4 text-sm'>
+										<p className='font-medium'>{sub.name}</p>
+										<p className='text-gray-600'>{sub.title}</p>
+									</div>
 								</div>
-							</div>
-						))}
-					</div>
+							))}
+						</div>
+					)}
 				</div>
 			</div>
 

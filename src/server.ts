@@ -40,7 +40,6 @@ app.use('/api/users', userRoutes)
 
 app.listen(PORT, async () => {
     console.log(`Server running at http://localhost:${PORT}`)
-
     try {
         await createConnection()
         console.log('Database connected!')

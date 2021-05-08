@@ -56,7 +56,7 @@ export default function SubPage() {
 
 	if (error) router.push('/');
 
-	let postsMarkup;
+	let postsMarkup = null;
 	if (!sub) {
 		postsMarkup = <p className='text-lg text-center'>Loading..</p>;
 	} else if (sub.posts.length === 0) {
@@ -121,7 +121,7 @@ export default function SubPage() {
 									<div className='flex items-center'>
 										<h1 className='mb-1 text-3xl font-bold'>{sub.title}</h1>
 									</div>
-									<p className='text-sm font-bold text-gray-500'>
+									<p className='text-sm font-bold text-gray-500 truncate'>
 										/r/{sub.name}
 									</p>
 								</div>
