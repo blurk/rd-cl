@@ -16,7 +16,7 @@ interface Action {
 const StateContext = createContext<State>({
 	authenticated: false,
 	user: null,
-	loading: true,
+	loading: true
 });
 
 const DispatchContext = createContext(null);
@@ -27,7 +27,7 @@ const reducer = (state: State, { type, payload }: Action) => {
 			return {
 				...state,
 				authenticated: true,
-				user: payload,
+				user: payload
 			};
 		case 'LOGOUT':
 			return { ...state, authenticated: false, user: null };
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	const [state, defaultDispatch] = useReducer(reducer, {
 		user: null,
 		authenticated: false,
-		loading: true,
+		loading: true
 	});
 
 	const dispatch = (type: string, payload?: any) =>

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import useSWR from 'swr';
 import PostCard from '../../components/PostCard';
-import { Comment, Post } from '../../types';
+import { Post, Comment } from '../../types';
 
 export default function user() {
 	const router = useRouter();

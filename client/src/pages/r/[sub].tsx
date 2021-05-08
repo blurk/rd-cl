@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import axios from 'axios';
 import classNames from 'classnames';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -44,8 +44,8 @@ export default function SubPage() {
 		formData.append('type', fileInputRef.current.name);
 
 		try {
-			await Axios.post<Sub>(`/subs/${sub.name}/image`, formData, {
-				headers: { 'Content-Type': 'multipart/form-data' },
+			await axios.post<Sub>(`/subs/${sub.name}/image`, formData, {
+				headers: { 'Content-Type': 'multipart/form-data' }
 			});
 
 			revalidate();
@@ -63,7 +63,7 @@ export default function SubPage() {
 		postsMarkup = <p className='text-lg text-center'>No posts submitted yet</p>;
 	} else {
 		postsMarkup = sub.posts.map((post) => (
-			<PostCard key={post.identifier} post={post} />
+			<PostCard key={post.identifier} post={post} revalidate={revalidate} />
 		));
 	}
 
@@ -86,7 +86,7 @@ export default function SubPage() {
 						{/* Banner image */}
 						<div
 							className={classNames('bg-blue-500', {
-								'cursor-pointer': ownSub,
+								'cursor-pointer': ownSub
 							})}
 							onClick={() => openFileInput('banner')}>
 							{sub.bannerUrl ? (
@@ -96,7 +96,7 @@ export default function SubPage() {
 										backgroundImage: `url(${sub.bannerUrl})`,
 										backgroundRepeat: 'no-repeat',
 										backgroundSize: 'cover',
-										backgroundPosition: 'center',
+										backgroundPosition: 'center'
 									}}></div>
 							) : (
 								<div className='h-20 bg-blue-500'></div>
@@ -110,7 +110,7 @@ export default function SubPage() {
 										src={sub.imageUrl}
 										alt='Sub'
 										className={classNames('rounded-full', {
-											'cursor-pointer': ownSub,
+											'cursor-pointer': ownSub
 										})}
 										onClick={() => openFileInput('image')}
 										width={70}

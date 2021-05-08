@@ -28,7 +28,7 @@ export default function submit() {
 			const { data: post } = await axios.post<Post>('/posts', {
 				title: title.trim(),
 				body,
-				sub: subName,
+				sub: subName
 			});
 
 			router.push(`/r/${subName}/${post.identifier}/${post.slug}`);
