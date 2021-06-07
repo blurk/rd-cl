@@ -7,3 +7,4 @@ Steps to run this project:
 3. Run `npm start` command
 "# reddit-clone" 
 "# rd-cl" 
+"# rd-cl" 
